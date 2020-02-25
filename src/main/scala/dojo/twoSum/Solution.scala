@@ -1,22 +1,25 @@
 package dojo.twoSum
 
+import scala.annotation.tailrec
+
 class Solution {
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
     findTwoSum(nums.toIndexedSeq, target, 0)
   }
 
-  def findTwoSum(
+  private def findTwoSum(
       indexNums: IndexedSeq[Int],
       target: Int,
-      index: Int
+      currentIndex: Int
   ): Array[Int] = {
-    val anotherNum = target - indexNums(index)
+    val anotherNum = target - indexNums.head
+    val currentFirstTailIndex = currentIndex + 1
 
-    if (indexNums.contains(anotherNum)) {
+    if (indexNums.tail.contains(anotherNum)) {
       val indexOfAnotherNum = indexNums.indexOf(anotherNum)
-      Array(index, indexNums.indexOf(anotherNum))
+      Array(currentIndex, indexNums.tail.indexOf(anotherNum) + currentFirstTailIndex)
     } else {
-        findTwoSum(indexNums, target, index+1)
+      findTwoSum(indexNums.tail, target, currentFirstTailIndex)
     }
   }
 }
