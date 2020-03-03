@@ -1,8 +1,8 @@
 package dojo.twoSum.headTailRecur
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class Test extends FunSuite {
+class Test extends AnyFunSuite {
   val testCases = Seq(
     TestCase(
       testId = 1,
