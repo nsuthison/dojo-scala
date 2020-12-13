@@ -18,6 +18,9 @@ project/plugins/project/
 .worksheet
 .idea
 
-### Metal on VSCode
+# VSCode
+.vscode
+
+# Metal on VSCode
 .metals/
 metals.sbt
