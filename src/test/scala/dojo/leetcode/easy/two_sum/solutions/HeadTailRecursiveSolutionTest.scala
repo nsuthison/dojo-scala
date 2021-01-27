@@ -1,8 +1,8 @@
-package dojo.twoSum.headTailRecur
+package dojo.leetcode.easy.two_sum.solutions
 
 import org.scalatest.funsuite.AnyFunSuite
 
-class Test extends AnyFunSuite {
+class HeadTailRecursiveSolutionTest extends AnyFunSuite {
   val testCases = Seq(
     TestCase(
       testId = 1,
@@ -28,7 +28,7 @@ class Test extends AnyFunSuite {
     test(
       s"Test case ${testId} : twoSum should return array of first and second index which summation of both equal to target number: $targetNumber"
     ) {
-      var solution = new Solution()
+      var solution = new HeadTailRecursiveSolution()
 
       val result = solution.twoSum(nums, targetNumber)
 

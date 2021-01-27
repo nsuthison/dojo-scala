@@ -1,4 +1,4 @@
-package dojo.easy.most_common_word
+package dojo.leetcode.easy.most_common_word.solutions
 
 import scala.collection.mutable
 import scala.collection.immutable.HashMap

@@ -1,3 +1,5 @@
+package dojo.leetcode.easy.subdomain_visit_count.solutions
+
 import scala.collection.mutable
 
 // Question: https://leetcode.com/problems/subdomain-visit-count/
