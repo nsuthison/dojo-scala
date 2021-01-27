@@ -1,5 +1,6 @@
 import scala.collection.mutable
 
+// Question: https://leetcode.com/problems/subdomain-visit-count/
 object Solution {
   def subdomainVisits(cpdomains: Array[String]): List[String] = {
 

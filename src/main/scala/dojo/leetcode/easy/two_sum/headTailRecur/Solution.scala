@@ -1,5 +1,6 @@
 package dojo.twoSum.headTailRecur
 
+// Question: https://leetcode.com/problems/two-sum/
 class Solution {
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
     findTwoSum(nums.toIndexedSeq, target, 0)

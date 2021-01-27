@@ -1,8 +1,9 @@
-package dojo.easy.MostCommonWord
+package dojo.easy.most_common_word
 
 import scala.collection.mutable
 import scala.collection.immutable.HashMap
 
+// Question: https://leetcode.com/problems/most-common-word/
 object Solution {
     def mostCommonWord(paragraph: String, banned: Array[String]): String = {
         
