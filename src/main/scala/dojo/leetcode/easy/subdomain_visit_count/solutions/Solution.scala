@@ -9,26 +9,26 @@ object Solution {
     var results = mutable.HashMap[String, Int]()
 
     for {
-        cpDomain <- separateDomainAndVisitedCount(cpdomains)
-        cpSubDomain <- seprateSubdomainAndVisitedCount(cpDomain)
-    }
-    
-    if (results.contains(cpSubDomain.domain)) {
-        results(cpSubDomain.domain) += cpSubDomain.visitedCount
+      cpDomain <- separateDomainAndVisitedCount(cpdomains)
+      cpSubDomain <- seprateSubdomainAndVisitedCount(cpDomain)
+    } if (results.contains(cpSubDomain.domain)) {
+      results(cpSubDomain.domain) += cpSubDomain.visitedCount
     } else {
-        results.addOne(cpSubDomain.domain, cpSubDomain.visitedCount)
+      results.addOne(cpSubDomain.domain, cpSubDomain.visitedCount)
     }
 
     val toReturn = for {
-        result <- results
+      result <- results
     } yield {
-        result._2 + " " + result._1
+      result._2 + " " + result._1
     }
 
     toReturn.toList
   }
 
-  private def separateDomainAndVisitedCount(cpDomains: Array[String]): Array[CpDomain] = {
+  private def separateDomainAndVisitedCount(
+      cpDomains: Array[String]
+  ): Array[CpDomain] = {
     for {
       cpDomain <- cpDomains
     } yield {
@@ -37,34 +37,33 @@ object Solution {
     }
   }
 
-  private def seprateSubdomainAndVisitedCount(cpDomain: CpDomain): Array[CpDomain] = {
+  private def seprateSubdomainAndVisitedCount(
+      cpDomain: CpDomain
+  ): Array[CpDomain] = {
 
     var toReturn = mutable.ArrayBuffer[CpDomain]()
 
     val subdomain = cpDomain.domain.split('.')
     val lastSubdomainIndex = subdomain.length - 1
 
-    var currentDomain:String = ""
+    var currentDomain: String = ""
     var i = lastSubdomainIndex
 
-    while(i >= 0) {
-        currentDomain = getDomain(currentDomain, subdomain(i))
-        toReturn.addOne(CpDomain(currentDomain, cpDomain.visitedCount))
-        i -= 1
+    while (i >= 0) {
+      currentDomain = getDomain(currentDomain, subdomain(i))
+      toReturn.addOne(CpDomain(currentDomain, cpDomain.visitedCount))
+      i -= 1
     }
 
     toReturn.toArray
   }
 
   private def getDomain(domain: String, currentSubdomain: String): String = {
-      if (domain.isEmpty())
-      {
-          return currentSubdomain
-      }
-      else
-      {
-          return s"$currentSubdomain.$domain"
-      }
+    if (domain.isEmpty()) {
+      return currentSubdomain
+    } else {
+      return s"$currentSubdomain.$domain"
+    }
   }
 }
 
