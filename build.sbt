@@ -10,4 +10,5 @@ lazy val root = (project in file(".")).
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % Test
 
 scalacOptions ++= Seq("-deprecation", "-feature")
+
 scalafmtOnCompile := true
