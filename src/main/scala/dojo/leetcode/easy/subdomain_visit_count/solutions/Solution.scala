@@ -6,16 +6,26 @@ import scala.collection.mutable
 object Solution {
   def subdomainVisits(cpdomains: Array[String]): List[String] = {
 
-    var results = mutable.HashMap[String, Int]()
+    //var results = mutable.HashMap[String, Int]()
 
-    for {
+    // for {
+    //   cpDomain <- separateDomainAndVisitedCount(cpdomains)
+    //   cpSubDomain <- seprateSubdomainAndVisitedCount(cpDomain)
+    // } if (results.contains(cpSubDomain.domain)) {
+    //   results(cpSubDomain.domain) += cpSubDomain.visitedCount
+    // } else {
+    //   results.addOne(cpSubDomain.domain, cpSubDomain.visitedCount)
+    // }
+
+    val cpSubDomains = for {
       cpDomain <- separateDomainAndVisitedCount(cpdomains)
       cpSubDomain <- seprateSubdomainAndVisitedCount(cpDomain)
-    } if (results.contains(cpSubDomain.domain)) {
-      results(cpSubDomain.domain) += cpSubDomain.visitedCount
-    } else {
-      results.addOne(cpSubDomain.domain, cpSubDomain.visitedCount)
+    } yield {
+      cpSubDomain
     }
+
+    val results =
+      cpSubDomains.groupBy(_.domain).view.mapValues(_.map(_.visitedCount).sum)
 
     val toReturn = for {
       result <- results
