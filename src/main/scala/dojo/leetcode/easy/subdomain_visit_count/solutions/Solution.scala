@@ -20,7 +20,7 @@ object Solution {
     val toReturn = for {
       result <- results
     } yield {
-      result._2 + " " + result._1
+      s"${result._2} ${result._1}"
     }
 
     toReturn.toList
@@ -47,12 +47,12 @@ object Solution {
     val lastSubdomainIndex = subdomain.length - 1
 
     var currentDomain: String = ""
-    var i = lastSubdomainIndex
+    var idx = lastSubdomainIndex
 
-    while (i >= 0) {
-      currentDomain = getDomain(currentDomain, subdomain(i))
+    while (idx >= 0) {
+      currentDomain = getDomain(currentDomain, subdomain(idx))
       toReturn.addOne(CpDomain(currentDomain, cpDomain.visitedCount))
-      i -= 1
+      idx -= 1
     }
 
     toReturn.toArray
