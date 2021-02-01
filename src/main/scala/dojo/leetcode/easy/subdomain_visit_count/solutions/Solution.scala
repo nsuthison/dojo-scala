@@ -1,7 +1,5 @@
 package dojo.leetcode.easy.subdomain_visit_count.solutions
 
-import scala.collection.mutable
-
 // Question: https://leetcode.com/problems/subdomain-visit-count/
 object Solution {
   def subdomainVisits(cpdomains: Array[String]): List[String] = {
@@ -40,19 +38,18 @@ object Solution {
       cpDomain: CpDomain
   ): Array[CpDomain] = {
 
-    var toReturn = mutable.ArrayBuffer[CpDomain]()
+    val subdomains = cpDomain.domain.split('.')
 
-    val subdomain = cpDomain.domain.split('.')
-    val lastSubdomainIndex = subdomain.length - 1
+    val toReturn =
+      subdomains.foldRight(List[CpDomain]())((currentSubdomain, rs) => {
 
-    var currentDomain: String = ""
-    var idx = lastSubdomainIndex
+        val previousDomain = rs.headOption.getOrElse(CpDomain("", 0)).domain
 
-    while (idx >= 0) {
-      currentDomain = getDomain(currentDomain, subdomain(idx))
-      toReturn.addOne(CpDomain(currentDomain, cpDomain.visitedCount))
-      idx -= 1
-    }
+        CpDomain(
+          domain = getDomain(previousDomain, currentSubdomain),
+          visitedCount = cpDomain.visitedCount
+        ) :: rs
+      })
 
     toReturn.toArray
   }
