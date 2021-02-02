@@ -26,9 +26,9 @@ class HeadTailRecursiveSolutionTest extends AnyFunSuite {
 
   for (TestCase(testId, nums, targetNumber, expectedIndices) <- testCases) {
     test(
-      s"Test case ${testId} : twoSum should return array of first and second index which summation of both equal to target number: $targetNumber"
+      s"Test case ${testId.toString()} : twoSum should return array of first and second index which summation of both equal to target number: ${targetNumber.toString}"
     ) {
-      var solution = new HeadTailRecursiveSolution()
+      val solution = new HeadTailRecursiveSolution()
 
       val result = solution.twoSum(nums, targetNumber)
 

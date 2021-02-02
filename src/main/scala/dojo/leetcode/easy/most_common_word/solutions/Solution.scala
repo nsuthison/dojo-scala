@@ -1,6 +1,5 @@
 package dojo.leetcode.easy.most_common_word.solutions
 
-import scala.collection.mutable
 import scala.collection.immutable.HashMap
 
 // Question: https://leetcode.com/problems/most-common-word/

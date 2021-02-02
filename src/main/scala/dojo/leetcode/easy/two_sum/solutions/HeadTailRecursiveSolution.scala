@@ -11,9 +11,9 @@ class HeadTailRecursiveSolution {
       target: Int,
       currentIndex: Int
   ): Array[Int] = {
-    val anotherNum = target - indexNums.head
+    val anotherNum = target - indexNums.headOption.getOrElse(0)
     val currentFirstTailIndex = currentIndex + 1
-    val tail = indexNums.tail
+    val tail = indexNums.drop(1)
 
     if (tail.contains(anotherNum)) {
       val indexOfAnotherNum = tail.indexOf(anotherNum) + currentFirstTailIndex
