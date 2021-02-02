@@ -1,7 +1,7 @@
 package dojo.leetcode.easy.two_sum.solutions
 
 // Question: https://leetcode.com/problems/two-sum/
-class HeadTailRecursiveSolution {
+object HeadTailRecursiveSolution {
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
     findTwoSum(nums.toIndexedSeq, target, 0)
   }
