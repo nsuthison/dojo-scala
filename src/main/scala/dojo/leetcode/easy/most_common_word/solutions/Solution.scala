@@ -31,18 +31,8 @@ object Solution {
     } yield getCharOrWhiteSpace(alphabet.toLower)
   }
 
-  def countRepeatWord(words: Array[String]): mutable.HashMap[String, Int] = {
-    var countRepeatWord = mutable.HashMap[String, Int]()
-
-    for (word <- words) {
-      if (countRepeatWord.contains(word)) {
-        countRepeatWord(word) += 1
-      } else {
-        countRepeatWord.addOne(word, 1)
-      }
-    }
-
-    countRepeatWord
+  def countRepeatWord(words: Array[String]): Map[String, Int] = {
+    words.groupBy(word => word).map(x => (x._1 -> x._2.length))
   }
 
   def getCharOrWhiteSpace(target: Char): Char = {
