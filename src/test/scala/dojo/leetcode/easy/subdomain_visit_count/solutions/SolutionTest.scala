@@ -37,12 +37,13 @@ class SolutionTest extends AnyWordSpec {
       "Return most frequent word" in {
 
         for (testCase <- testCases) {
+
           val subdomainCounts = Solution.subdomainVisits(testCase.cpDomainInput)
 
-          subdomainCounts.length should equal(testCase.expectedResult.length)
+          subdomainCounts.length shouldEqual testCase.expectedResult.length
 
           for (subdomainCount <- subdomainCounts) {
-            testCase.expectedResult.contains(subdomainCount) should be(true)
+            testCase.expectedResult.contains(subdomainCount) shouldBe (true)
           }
         }
       }
