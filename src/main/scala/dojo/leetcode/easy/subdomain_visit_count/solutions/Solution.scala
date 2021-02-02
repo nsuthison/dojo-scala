@@ -17,7 +17,7 @@ object Solution {
     val toReturn = for {
       result <- results
     } yield {
-      s"${result._2} ${result._1}"
+      s"${result._2.toString()} ${result._1}"
     }
 
     toReturn.toList
@@ -56,9 +56,9 @@ object Solution {
 
   private def getDomain(domain: String, currentSubdomain: String): String = {
     if (domain.isEmpty()) {
-      return currentSubdomain
+      currentSubdomain
     } else {
-      return s"$currentSubdomain.$domain"
+      s"$currentSubdomain.$domain"
     }
   }
 }

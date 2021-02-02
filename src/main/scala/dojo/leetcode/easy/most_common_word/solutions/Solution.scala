@@ -14,7 +14,9 @@ object Solution {
     val notBannedWords = getNotBannedWords(allWords, banned)
     val countRepeat = countRepeatWord(notBannedWords)
 
-    val maxRepeatedWord = countRepeat.maxBy(_._2)
+    val maxRepeatedWord = countRepeat.foldLeft("" -> 0)((left, right) => {
+      if (left._2 > right._2) left else right
+    })
 
     maxRepeatedWord._1
   }
