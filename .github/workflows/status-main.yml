@@ -22,4 +22,8 @@ jobs:
     - name: build
       run: sbt compile
     - name: Run tests
-      run: sbt test
+      run: sbt coverage test
+    - name: Coverage Report
+      run: sbt coverageReport
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
