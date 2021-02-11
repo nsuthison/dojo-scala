@@ -5,6 +5,7 @@ import scala.annotation.tailrec
 object Solution {
   def maximalSquare(matrix: Array[Array[Char]]): Int = {
 
+    // Create matrix which store maximum square that span from the particular block
     val maxSquareMatrix = matrix.zipWithIndex.map {
       case (row, rowIdx) =>
         row.zipWithIndex.map {
@@ -17,6 +18,7 @@ object Solution {
       if (b > a) b else a
     }
 
+    // Get maximum number from above matrix
     maxSquareMatrix.foldLeft(0)((foldLeftRowResult, row) =>
       getMax(
         foldLeftRowResult,
@@ -34,9 +36,13 @@ object Solution {
       currentSize: Int,
       matrix: Array[Array[Char]]
   ): Int = {
+    // If current size of the square that is the legit one,
+    // Try to prove that is the next one legit or not
     if (isSquare(row, column, currentSize, matrix)) {
       findMaximalSqureThatFormFrom(row, column, currentSize + 1, matrix)
     } else {
+      // The current size is the one that didn't legit
+      // We need to use previous one
       val lastLegitSize = currentSize - 1
       lastLegitSize * lastLegitSize
     }
