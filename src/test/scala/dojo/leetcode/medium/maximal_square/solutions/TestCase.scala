@@ -1,6 +1,7 @@
 package dojo.leetcode.medium.maximal_square.solutions
 
 case class MaximalSquareTestCase(
+    testId: Int,
     matrix: Array[Array[Char]],
     expectedResult: Int
 )
