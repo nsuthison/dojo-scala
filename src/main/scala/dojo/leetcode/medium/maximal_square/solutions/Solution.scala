@@ -20,17 +20,33 @@ object Solution {
       matrix: Array[Array[Char]]
   ): Boolean = {
 
-    val rowsToCheck = matrix.slice(startingRow, startingRow + width)
+    if (isSquareToCheckOutOfRange(startingRow, startingColumn, width, matrix))
+      false
+    else {
+      val rowsToCheck = matrix.slice(startingRow, startingRow + width)
 
-    val isRowsLegit = rowsToCheck.map(row => {
-      val columnToCheckFromRow =
-        row.slice(startingColumn, startingColumn + width)
+      val isRowsLegit = rowsToCheck.map(row => {
+        val columnToCheckFromRow =
+          row.slice(startingColumn, startingColumn + width)
 
-      columnToCheckFromRow.foldLeft(true)((left, right) => {
-        left && (right == '1')
+        columnToCheckFromRow.foldLeft(true)((left, right) => {
+          left && (right == '1')
+        })
       })
-    })
 
-    isRowsLegit.foldLeft(true)(_ && _)
+      isRowsLegit.foldLeft(true)(_ && _)
+    }
+  }
+
+  def isSquareToCheckOutOfRange(
+      startingRow: Int,
+      startingColumn: Int,
+      width: Int,
+      matrix: Array[Array[Char]]
+  ): Boolean = {
+    val isRowToCheckOutOfRange = startingRow + width > matrix.length
+    val isColumnToCheckOutOfRange = startingColumn + width > matrix(0).length
+
+    isRowToCheckOutOfRange || isColumnToCheckOutOfRange
   }
 }

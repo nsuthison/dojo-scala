@@ -58,6 +58,13 @@ class SolutionTest extends AnyFlatSpec with GivenWhenThen {
         1,
         1,
         false
+      ),
+      IsSquareTestCase(
+        matrix,
+        1,
+        4,
+        2,
+        false
       )
     )
 
