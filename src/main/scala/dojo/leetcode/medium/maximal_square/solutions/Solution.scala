@@ -2,6 +2,7 @@ package dojo.leetcode.medium.maximal_square.solutions
 
 import scala.annotation.tailrec
 
+// Question: https://leetcode.com/problems/maximal-square/
 object Solution {
   def maximalSquare(matrix: Array[Array[Char]]): Int = {
 
